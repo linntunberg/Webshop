@@ -1,0 +1,25 @@
+﻿@model List<Webshop.Models.ProductsViewModel>
+
+@{
+    ViewBag.Title = "Products";
+}
+
+<h2>Products</h2>
+@foreach (var products in Model)
+{<h3>
+    <span style="white-space: nowrap">
+
+        <a class="bold" href="/products/get/@(products.Id)">
+            @(products.Brand)
+        </a>
+        
+    </span>
+</h3>
+    <img class="thumbnail" src="images/@(products.Image)" alt="image of product">
+    <form action="/cart/addtocart/@(products.Id)" method=post>
+        <p class="price">Price: $@(products.Price)</p>
+        <input type=submit value="Add to Cart" />
+    </form>
+    <br />
+    <br />
+    }

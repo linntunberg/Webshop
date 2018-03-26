@@ -1,0 +1,11 @@
+C:\Users\Linn Tunberg\Desktop\C#\Webshop\Webshop\bin\Debug\netcoreapp2.0\Webshop.deps.json
+C:\Users\Linn Tunberg\Desktop\C#\Webshop\Webshop\bin\Debug\netcoreapp2.0\Webshop.runtimeconfig.json
+C:\Users\Linn Tunberg\Desktop\C#\Webshop\Webshop\bin\Debug\netcoreapp2.0\Webshop.runtimeconfig.dev.json
+C:\Users\Linn Tunberg\Desktop\C#\Webshop\Webshop\bin\Debug\netcoreapp2.0\Webshop.dll
+C:\Users\Linn Tunberg\Desktop\C#\Webshop\Webshop\bin\Debug\netcoreapp2.0\Webshop.pdb
+C:\Users\Linn Tunberg\Desktop\C#\Webshop\Webshop\obj\Debug\netcoreapp2.0\Webshop.csprojResolveAssemblyReference.cache
+C:\Users\Linn Tunberg\Desktop\C#\Webshop\Webshop\obj\Debug\netcoreapp2.0\Webshop.csproj.CoreCompileInputs.cache
+C:\Users\Linn Tunberg\Desktop\C#\Webshop\Webshop\obj\Debug\netcoreapp2.0\Webshop.AssemblyInfoInputs.cache
+C:\Users\Linn Tunberg\Desktop\C#\Webshop\Webshop\obj\Debug\netcoreapp2.0\Webshop.AssemblyInfo.cs
+C:\Users\Linn Tunberg\Desktop\C#\Webshop\Webshop\obj\Debug\netcoreapp2.0\Webshop.dll
+C:\Users\Linn Tunberg\Desktop\C#\Webshop\Webshop\obj\Debug\netcoreapp2.0\Webshop.pdb
