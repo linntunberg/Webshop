@@ -1,25 +1,7 @@
-﻿@model List<Webshop.Models.HomeViewModel>
-@{
+﻿@{
     ViewData["Title"] = "Home Page";
 }
 
-@foreach (var home in Model)
-{<h3>
-        <span style="white-space: nowrap">
-
-            <a class="bold" href="/products/get/@(home.Id)">
-                @(home.Brand)
-            </a>
-
-        </span>
-    </h3>
-    <img class="thumbnail" src="images/@(home.Image)" alt="image of product">
-    <form action="/cart/addtocart/@(home.Id)" method=post>
-        <p class="price">Price: $@(home.Price)</p>
-    </form>
-    <br />
-    <br />
-}
 
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
@@ -31,10 +13,10 @@
     </ol>
     <div class="carousel-inner" role="listbox">
         <div class="item active">
-            <img class="thumbnail" src="images/@(home.Image)" alt="image of product">
+            <img src="~/images/vinylrosegolddress.jpg" alt="Clothing Image" class="img-responsive" />
             <div class="carousel-caption" role="option">
                 <p>
-                    Rose Gold Vinyl Dress </br>
+                    Rose Gold Vinyl Dress <br>
                     <a class="btn btn-default" href="https://www.google.com">
                         Go To Item
                     </a>
@@ -42,10 +24,10 @@
             </div>
         </div>
         <div class="item">
-            <img src="https://media.dollskill.com/media/nGsx3KuBfAQj5vU3AToJwIwKovve64NG-34.jpg" alt="Clothing Image" class="img-responsive" />
+            <img src="~/images/greenlacetop.jpg" alt="Clothing Image" class="img-responsive" />
             <div class="carousel-caption" role="option">
                 <p>
-                    Light Pink Slip Dress </br>
+                    Green Lace Top <br>
                     <a class="btn btn-default" href="https://www.google.com">
                         Go To Item
                     </a>
@@ -53,10 +35,10 @@
             </div>
         </div>
         <div class="item">
-            <img src="https://media.dollskill.com/media/DUCGzNWDZBwapThE2dkXuHq8oT6SALVj-34.jpg" alt="Clothing Image" class="img-responsive" />
+            <img src="~/images/iridescentdress.jpg" alt="Clothing Image" class="img-responsive" />
             <div class="carousel-caption" role="option">
                 <p>
-                    Devotion Dress </br>
+                    Iridescent Space Dress <br>
                     <a class="btn btn-default" href="https://www.google.com">
                         Go To Item
                     </a>
@@ -64,10 +46,10 @@
             </div>
         </div>
         <div class="item">
-            <img src="https://media.dollskill.com/media/Pa6x3h2NmTOUpQzid8V97LGU8CGptcoX-34.jpg" alt="Clothing Image" class="img-responsive" />
+            <img src="~/images/unicornoveralls.jpg" alt="Clothing Image" class="img-responsive" />
             <div class="carousel-caption" role="option">
                 <p>
-                    Stars Mesh Top </br>
+                    Unicorn Overalls <br>
                     <a class="btn btn-default" href="https://www.dollskill.com/">
                         Go To Item
                     </a>

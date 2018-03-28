@@ -10,12 +10,12 @@
     <span style="white-space: nowrap">
 
         <a class="bold" href="/products/get/@(products.Id)">
-            @(products.Brand)
+            @(products.Item)
         </a>
         
     </span>
 </h3>
-    <img class="thumbnail" src="images/@(products.Image)" alt="image of product">
+    <img class="thumbnail" src="images/@(products.Image)" alt="image of product" style="width: 400px;">
     <form action="/cart/addtocart/@(products.Id)" method=post>
         <p class="price">Price: $@(products.Price)</p>
         <input type=submit value="Add to Cart" />
@@ -23,3 +23,4 @@
     <br />
     <br />
     }
+
