@@ -17,7 +17,7 @@ namespace Webshop.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            
 
             return View();
         }
@@ -37,6 +37,12 @@ namespace Webshop.Controllers
         public IActionResult Cart()
         {
             
+            return View();
+        }
+
+        public IActionResult Checkout()
+        {
+
             return View();
         }
 

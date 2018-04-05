@@ -11,14 +11,15 @@
 @foreach (var products in Model)
 {
     <br />
+    <p style="color: white">@(products.Item)</p>
     <img class="thumbnail" src="images/@(products.Image)" alt="image of product" style="width: 400px;">
-    <p style="color: white">CartId @(products.CartId)</p>
-    <p style="color: white">Quantity @(products.Quantity)</p>
-    <p style="color: white">ProductId @(products.ProductId)</p>
-    <p style="color: white">Price @(products.Price)</p>
-    <p style="color: white">Item @(products.Item)</p>
+    <p style="color: white">Quantity: @(products.Quantity)</p>
+    <p style="color: white">Price: $@(products.Price)</p>
     <br />
     <br />
 
 }
 
+<form action="/Checkout" method=post>
+    <input type=submit value="Proceed to Checkout" />
+</form>
