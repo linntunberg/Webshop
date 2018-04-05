@@ -3,24 +3,27 @@
 @{
     ViewBag.Title = "Products";
 }
-
-<h2>Products</h2>
+<body style="background-color: black">
+</body>
+<h2 class="header" style="color: white">Products</h2>
 @foreach (var products in Model)
-{<h3>
-    <span style="white-space: nowrap">
+{
+    <br />
+    <h4 style="color: white">
+     <span style="white-space: nowrap">
+         
+    
+             @(products.Item)
+      
 
-        <a class="bold" href="/products/get/@(products.Id)">
-            @(products.Item)
-        </a>
-        
-    </span>
-</h3>
+     </span>
+</h4>
     <img class="thumbnail" src="images/@(products.Image)" alt="image of product" style="width: 400px;">
-    <form action="/cart/addtocart/@(products.Id)" method=post>
-        <p class="price">Price: $@(products.Price)</p>
+    <form action="/Cart/AddToCart/@(products.Id)" method=post>
+        <p class="price" style="color: white">Price: $@(products.Price)</p>
         <input type=submit value="Add to Cart" />
     </form>
     <br />
     <br />
-    }
+}
 

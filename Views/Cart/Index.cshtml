@@ -1,0 +1,24 @@
+﻿@model List<Webshop.Models.CartViewModel>
+
+@{
+    ViewBag.Title = "Products";
+}
+<body style="background-color: black">
+</body>
+<h2 class="header" style="color: white">Cart Items</h2>
+
+
+@foreach (var products in Model)
+{
+    <br />
+    <img class="thumbnail" src="images/@(products.Image)" alt="image of product" style="width: 400px;">
+    <p style="color: white">CartId @(products.CartId)</p>
+    <p style="color: white">Quantity @(products.Quantity)</p>
+    <p style="color: white">ProductId @(products.ProductId)</p>
+    <p style="color: white">Price @(products.Price)</p>
+    <p style="color: white">Item @(products.Item)</p>
+    <br />
+    <br />
+
+}
+

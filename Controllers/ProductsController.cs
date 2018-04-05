@@ -27,22 +27,5 @@ namespace Webshop.Controllers
             }
         }
 
-        public ActionResult Get(string id)
-        {
-            
-            using (var connection = new MySqlConnection(this.connectionString))
-            {
-                var productItem = connection.QuerySingleOrDefault<ProductsViewModel>("select * from products where id = @id", new { id });
-
-                if (productItem == null)
-                {
-                    return NotFound();
-                }
-
-                return View(productItem);
-            }
-
-          
-        }
     }
 }
