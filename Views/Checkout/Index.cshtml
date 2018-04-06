@@ -1,4 +1,4 @@
-﻿@model List<Webshop.Models.CheckoutViewModel>
+﻿@model Webshop.Models.CheckoutViewModel
 @{
 }
 <body style="background-color: black">
@@ -6,7 +6,8 @@
 
 <h2 class="header" style="color: white">Checkout</h2>
 
-@foreach (var products in Model)
+
+@foreach (var products in Model.Cart)
 {
     <br />
     <p style="color: white">@(products.Item)</p>
@@ -17,6 +18,7 @@
     <br />
 
 }
+    <h4 style="color: white">Total: $@(Model.Sum)</h4>
 
 <form action="" style="color: white; width: 200px;">
 

@@ -6,14 +6,14 @@ using Webshop.Models;
 using MySql.Data.MySqlClient;
 using Dapper;
 using Microsoft.Extensions.Configuration;
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
 
 namespace Webshop.Controllers
 {
     public class CheckoutController : Controller
     {
         private readonly string connectionString;
-        // GET: /<controller>/
+      
         public ActionResult Index()
         {
             var cartId = GetOrCreateCartId();
@@ -22,9 +22,16 @@ namespace Webshop.Controllers
             {
                 try
                 {
-                    var cartItems = connection.Query<CheckoutViewModel>("SELECT carts.cartId, sum(carts.quantity) as quantity, carts.productId, products.price, products.item, products.image FROM products INNER JOIN carts ON carts.productId = products.id WHERE carts.cartId = @cartId GROUP BY carts.productId; ",
+                    var cartItems = connection.Query<CartViewModel>("SELECT carts.cartId, sum(carts.quantity) as quantity, carts.productId, products.price, products.item, products.image FROM products INNER JOIN carts ON carts.productId = products.id WHERE carts.cartId = @cartId GROUP BY carts.productId; ",
                             new { cartId }).ToList();
-                    return View(cartItems);
+
+                    var sum = cartItems.Select(c => c.Price * c.Quantity).Sum();
+
+                    var checkoutItems = new CheckoutViewModel();
+                    checkoutItems.Cart = cartItems;
+                    checkoutItems.Sum = sum;
+
+                    return View(checkoutItems);
                 }
                 catch (Exception)
                 {
