@@ -1,0 +1,25 @@
+﻿@model List<Webshop.Project.Core.Models.CartViewModel>
+
+@{
+    ViewBag.Title = "Products";
+}
+<body style="background-color: black">
+</body>
+<h2 class="header" style="color: white">Cart Items</h2>
+
+
+@foreach (var products in Model)
+{
+    <br />
+    <p style="color: white">@(products.Item)</p>
+    <img class="thumbnail" src="images/@(products.Image)" alt="image of product" style="width: 400px;">
+    <p style="color: white">Quantity: @(products.Quantity)</p>
+    <p style="color: white">Price: $@(products.Price)</p>
+    <br />
+    <br />
+
+}
+
+<form action="/Checkout" method=post>
+    <input type=submit value="Proceed to Checkout" />
+</form>

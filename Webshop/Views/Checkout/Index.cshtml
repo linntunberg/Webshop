@@ -1,0 +1,47 @@
+﻿@model Webshop.Project.Core.Models.CheckoutViewModel
+@{
+}
+<body style="background-color: black">
+</body>
+
+<h2 class="header" style="color: white">Checkout</h2>
+
+
+@foreach (var products in Model.Cart)
+{
+    <br />
+    <p style="color: white">@(products.Item)</p>
+    <img class="thumbnail" src="images/@(products.Image)" alt="image of product" style="width: 400px;">
+    <p style="color: white">Quantity: @(products.Quantity)</p>
+    <p style="color: white">Price: $@(products.Price)</p>
+    <br />
+    <br />
+
+}
+    <h4 style="color: white">Total: $@(Model.Sum)</h4>
+
+@using (Html.BeginForm("Order", "Checkout"))
+{
+
+    <input type="hidden" name="cartId" value="@Model.Cart[0].CartId" />
+    <input type="hidden" name="sum" value="@(Model.Sum)" />
+
+
+  <p>First name:</p>
+  <input style="color: black" type="text" name="FirstName" value=""><br>
+  <p>Last name:</p>
+  <input style="color: black" type="text" name="LastName" value=""><br>
+  <p>Email:</p> 
+  <input style="color: black" type="text" name="Email" value=""><br>
+  <p>Address:</p> 
+  <input style="color: black" type="text" name="Address" value=""><br>
+  <p>Country:</p> 
+  <input style="color: black" type="text" name="Country" value=""><br>
+  <p>Zipcode:</p>
+  <input style="color: black" type="number" name="Zipcode" value=""><br>
+  <p>Card Number:</p> 
+  <input style="color: black" type="number" name="CardNumber" value=""><br>
+
+  <input type=submit value="Place Order" />
+    
+  }
