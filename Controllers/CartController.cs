@@ -1,69 +1,45 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Webshop.Models;
-using MySql.Data.MySqlClient;
-using Dapper;
 using Microsoft.Extensions.Configuration;
-
+using Webshop.Project.Core.Models;
+using Webshop.Project.Core.Repositories.Implementations;
+using Webshop.Project.Core.Services.Implementations;
 
 namespace Webshop.Controllers
 {
     public class CartController : Controller
     {
         private readonly string connectionString;
+        private CartService cartService;
         // GET: /<controller>/
-        public ActionResult Index()
-        {
-            var cartId = GetOrCreateCartId();
 
-            using (var connection = new MySqlConnection(this.connectionString))
-            {
-                try
-                {
-                    var cartItems = connection.Query<CartViewModel>("SELECT carts.cartId, sum(carts.quantity) as quantity, carts.productId, products.price, products.item, products.image FROM products INNER JOIN carts ON carts.productId = products.id WHERE carts.cartId = @cartId GROUP BY carts.productId; ",
-                            new { cartId }).ToList();
-                    return View(cartItems);
-                }
-                catch (Exception)
-                {
-                    return NotFound();
-                }
-            }
+        public CartController(IConfiguration configuration)
+        {
+            this.connectionString = configuration.GetConnectionString("ConnectionString");
+            cartService = new CartService(new CartRepository(this.connectionString));
+        }
+
+        public ActionResult Index(int CartId)
+        {
+            var cartId = this.GetOrCreateCartId();
+
+            List<CartViewModel> cartItems = cartService.GetCart(CartId);
+
+                    return View(cartItems);               
         }
 
         [HttpPost]
         public ActionResult AddToCart(int id)
         {
-            var cartId = GetOrCreateCartId();
+            var cartId = this.GetOrCreateCartId();
             var quantity = 1;
-
-            using (var connection = new MySqlConnection(this.connectionString))
-            {
-                try
-                {
-                    connection.Execute(
-                        "INSERT INTO Carts (productId, cartId, quantity) VALUES(@id, @cartId, @quantity )",
-                        new { id, cartId, quantity });
-                }
-                catch (Exception)
-                {
-                    return NotFound();
-                }
-
+            this.cartService.InsertCart(id, cartId, quantity);
+           
                 return RedirectToAction("Index", "Products");
-
-            }
-        }
-       
-        public CartController(IConfiguration configuration)
-        {
-            this.connectionString = configuration.GetConnectionString("ConnectionString");
         }
 
-        private string GetOrCreateCartId()
+        public string GetOrCreateCartId()
         {
             if (this.Request.Cookies.ContainsKey("CartId"))
             {
@@ -74,5 +50,4 @@ namespace Webshop.Controllers
             return cartId;
         }
     }
-
 }

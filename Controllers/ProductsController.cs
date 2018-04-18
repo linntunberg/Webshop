@@ -5,26 +5,30 @@ using Dapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Webshop.Models;
-using MySql.Data.MySqlClient;   
+using Webshop.Project.Core.Models;
+using MySql.Data.MySqlClient;
+using Webshop.Repositories.Implementations;
+using Webshop.Project.Core.Repositories;
+using Webshop.Project.Core.Services.Implementations;
 
 namespace Webshop.Controllers
 {
     public class ProductsController : Controller
     {
+        private readonly ProductService productService;
         private readonly string connectionString;
-        private List<ProductsViewModel> products;
+        
         public ProductsController(IConfiguration configuration)
         {
-            this.connectionString = configuration.GetConnectionString("ConnectionString");
+            var connectionString = configuration.GetConnectionString("ConnectionString");
+            productService = new ProductService(new ProductRepository(this.connectionString));
         }
+        
 
         public ActionResult Index()
         {
-            using (var connection = new MySqlConnection(this.connectionString))
-            {
-                products = connection.Query<ProductsViewModel>("select * from products").ToList();
-                return View(products);
-            }
+            var products = this.productService.GetAll();
+            return View(products);
         }
 
     }
